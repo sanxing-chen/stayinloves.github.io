@@ -1,0 +1,1226 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Slabo 27px:300,300italic,400,400italic,700,700italic|Amatic SC:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="string,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1">
+
+
+
+
+
+
+<meta name="description" content="C++ string 详解">
+<meta name="keywords" content="string">
+<meta property="og:type" content="article">
+<meta property="og:title" content="string">
+<meta property="og:url" content="http://stay.wiki/2016/07/17/string/index.html">
+<meta property="og:site_name" content="STay&#39;s Blog">
+<meta property="og:description" content="C++ string 详解">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-01-29T21:47:05.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="string">
+<meta name="twitter:description" content="C++ string 详解">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> string | STay's Blog </title>
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-76805514-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">STay's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Just is a normal Blog.</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-board">
+          <a href="/board" rel="section">
+            
+              <i class="menu-item-icon fa fa-heart fa-fw"></i> <br>
+            
+            留言
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                string
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-17T16:40:27+08:00" content="2016-07-17">
+              2016-07-17
+            </time>
+          </span>
+
+          
+            <span class="post-category">
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope="" itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/17/string/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/07/17/string/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>C++ string 详解<br><a id="more"></a><br>作者 Nicolai M.Josuttis</p>
+<p>C++ 语言是个十分优秀的语言，但优秀并不表示完美。还是有许多人不愿意使用C或者C++，为什么？原因众多，其中之一就是C/C++的文本处理功能太麻烦，用起来很不方便。以前没有接触过其他语言时，每当别人这么说，我总是不屑一顾，认为他们根本就没有领会C++的精华，或者不太懂C++，现在我接触 perl, php, 和Shell脚本以后，开始理解了以前为什么有人说C++文本处理不方便了。</p>
+<p>举例来说，如果文本格式是：用户名 电话号码，文件名name.txt Tom 23245332 Jenny 22231231 Heny 22183942 Tom 23245332 …</p>
+<p>现在我们需要对用户名排序，且只输出不同的姓名。</p>
+<p>那么在shell 编程中，可以这样用：</p>
+<pre><code>awk &apos;{print $1}&apos; name.txt | sort | uniq
+</code></pre><p>简单吧？</p>
+<p>如果使用C/C++ 就麻烦了，他需要做以下工作： 先打开文件，检测文件是否打开，如果失败，则退出。 声明一个足够大得二维字符数组或者一个字符指针数组 读入一行到字符空间 然后分析一行的结构，找到空格，存入字符数组中。 关闭文件 写一个排序函数，或者使用写一个比较函数，使用sort()排序 遍历数组，比较是否有相同的，如果有，则要删除，copy… 输出信息</p>
+<p>你可以用C++或者C语言去实现这个流程。如果一个人的主要工作就是处理这种类似的文本(例如做apache的日志统计和分析),你说他会喜欢C/C++么？</p>
+<p>当然，有了STL，这些处理会得到很大的简化。我们可以使用 fstream来代替麻烦的fopen fread fclose, 用vector来代替数组。最重要的是用 string来代替char * 数组，使用sort排序算法来排序，用unique 函数来去重。听起来好像很不错。看看下面代码(例程1）：</p>
+<pre><code>#include &lt;string&gt;
+#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+#include &lt;vector&gt;
+#include &lt;fstream&gt;
+using namespace std;
+int main()
+{
+    ifstream in(&quot;name.txt&quot;);
+    string strtmp;
+    vector&lt;string&gt; vect;
+    while(getline(in, strtmp, &apos;\n&apos;))
+    vect.push_back(strtmp.substr(0, strtmp.find(&apos; &apos;)));
+    sort(vect.begin(), vect.end());
+    vector&lt;string&gt;::iterator it=unique(vect.begin(), vect.end());
+    copy(vect.begin(), it, ostream_iterator&lt;string&gt;(cout, &quot;\n&quot;));
+    return 0;
+}
+</code></pre><p>也还不错吧，至少会比想象得要简单得多！（代码里面没有对错误进行处理，只是为了说明问题，不要效仿).</p>
+<p>当然，在这个文本格式中，不用vector而使用map会更有扩充性，例如，还可通过人名找电话号码等等，但是使用了map就不那么好用sort了。你可以用map试一试。</p>
+<p>这里string的作用不只是可以存储字符串，还可以提供字符串的比较，查找等。在sort和unique函数中就默认使用了less 和equal_to函数, 上面的一段代码，其实使用了string的以下功能： 存储功能，在getline() 函数中 查找功能，在find() 函数中 子串功能，在substr() 函数中 string operator &lt; , 默认在sort() 函数中调用 string operator == , 默认在unique() 函数中调用</p>
+<p>总之，有了string 后，C++的字符文本处理功能总算得到了一定补充，加上配合STL其他容器使用，其在文本处理上的功能已经与perl, shell, php的距离缩小很多了。 因此掌握string 会让你的工作事半功倍。</p>
+<h1 id="string-使用"><a href="#string-使用" class="headerlink" title="string 使用"></a>string 使用</h1><p>其实，string并不是一个单独的容器，只是basic_string 模板类的一个typedef 而已，相对应的还有wstring, 你在string 头文件中你会发现下面的代码:</p>
+<pre><code>extern &quot;C++&quot; {
+typedef basic_string &lt;char&gt; string;
+typedef basic_string &lt;wchar_t&gt; wstring;
+} // extern &quot;C++&quot;
+</code></pre><p>由于只是解释string的用法，如果没有特殊的说明，本文并不区分string 和 basic_string的区别。</p>
+<p>string 其实相当于一个保存字符的序列容器，因此除了有字符串的一些常用操作以外，还有包含了所有的序列容器的操作。字符串的常用操作包括：增加、删除、修改、查找比较、链接、输入、输出等。详细函数列表参看附录。不要害怕这么多函数，其实有许多是序列容器带有的，平时不一定用的上。</p>
+<p>如果你要想了解所有函数的详细用法，你需要查看basic_string，或者下载STL编程手册。这里通过实例介绍一些常用函数。</p>
+<h2 id="充分使用string-操作符"><a href="#充分使用string-操作符" class="headerlink" title="充分使用string 操作符"></a>充分使用string 操作符</h2><p>string 重载了许多操作符，包括 +, +=, &lt;, =, , [], &lt;&lt;, &gt;&gt;等，正式这些操作符，对字符串操作非常方便。先看看下面这个例子：</p>
+<pre><code>#include &lt;string&gt;
+#include &lt;iostream&gt;
+using namespace std;
+int main()
+{
+    string strinfo=&quot;Please input your name:&quot;;
+    cout &lt;&lt; strinfo ;
+    cin &gt;&gt; strinfo;
+    if( strinfo == &quot;winter&quot; )
+        cout &lt;&lt; &quot;you are winter!&quot;&lt;&lt;endl;
+    else if( strinfo != &quot;wende&quot; )
+        cout &lt;&lt; &quot;you are not wende!&quot;&lt;&lt;endl;
+    else if( strinfo &lt; &quot;winter&quot;)
+        cout &lt;&lt; &quot;your name should be ahead of winter&quot;&lt;&lt;endl;
+    else
+        cout &lt;&lt; &quot;your name should be after of winter&quot;&lt;&lt;endl;
+    strinfo += &quot; , Welcome to China!&quot;;
+    cout &lt;&lt; strinfo&lt;&lt;endl;
+    cout &lt;&lt;&quot;Your name is :&quot;&lt;&lt;endl;
+    string strtmp = &quot;How are you? &quot; + strinfo;
+    for(int i = 0 ; i &lt; strtmp.size(); i ++)
+        cout&lt;&lt;strtmp[i];
+    return 0;
+}
+</code></pre><p>下面是程序的输出</p>
+<pre><code>Please input your name:Hero
+you are not wende!
+Hero , Welcome to China!
+How are you? Hero , Welcome to China!
+</code></pre><p>有了这些操作符，在STL中仿函数都可以直接使用string作为参数，例如 <code>less</code>, <code>great</code>, <code>equal_to</code> 等，因此在把<code>string</code>作为参数传递的时候，它的使用和<code>int</code>或者float等已经没有什么区别了。例如，你可以使用：</p>
+<pre><code>map&lt;string, int&gt; mymap; //以上默认使用了 less&lt;string&gt;
+</code></pre><p>有了 <code>operator +</code> 以后，你可以直接连加，例如：</p>
+<pre><code>string strinfo=&quot;Winter&quot;;
+string strlast=&quot;Hello &quot; + strinfo + &quot;!&quot;;
+string strtest=&quot;Hello &quot; + strinfo + &quot; Welcome&quot; + &quot; to China&quot; + &quot; !&quot;;//你还可以这样：
+</code></pre><p>看见其中的特点了吗？只要你的等式里面有一个 string 对象，你就可以一直连续”+”，但有一点需要保证的是，在开始的两项中，必须有一项是 string 对象。其原理很简单：</p>
+<p>系统遇到”+”号，发现有一项是string 对象。 系统把另一项转化为一个临时 string 对象。 执行 operator + 操作，返回新的临时string 对象。 如果又发现”+”号，继续第一步操作。</p>
+<p>由于这个等式是由左到右开始检测执行，如果开始两项都是const char ，程序自己并没有定义两个const char 的加法，编译的时候肯定就有问题了。</p>
+<p>有了操作符以后，assign(), append(), compare(), at()等函数，除非有一些特殊的需求时，一般是用不上。当然at()函数还有一个功能，那就是检查下标是否合法，如果是使用：</p>
+<pre><code>string str=&quot;winter&quot;;//下面一行有可能会引起程序中断错误
+str[100]=&apos;!&apos;;//下面会抛出异常:throws: out_of_range
+cout&lt;&lt;str.at(100)&lt;&lt;endl;
+</code></pre><p>了解了吗？如果你希望效率高，还是使用[]来访问，如果你希望稳定性好，最好使用at()来访问。</p>
+<h2 id="眼花缭乱的string-find-函数"><a href="#眼花缭乱的string-find-函数" class="headerlink" title="眼花缭乱的string find 函数"></a>眼花缭乱的string find 函数</h2><p>由于查找是使用最为频繁的功能之一，string 提供了非常丰富的查找函数。其列表如下： 函数名 描述 find 查找 rfind 反向查找 <code>find_first_of</code> 查找包含子串中的任何字符，返回第一个位置 <code>find_first_not_of</code> 查找不包含子串中的任何字符，返回第一个位置 <code>find_last_of</code> 查找包含子串中的任何字符，返回最后一个位置 <code>find_last_not_of</code> 查找不包含子串中的任何字符，返回最后一个位置以上函数都是被重载了4次，以下是以<code>find_first_of</code> 函数为例说明他们的参数，其他函数和其参数一样，也就是说总共有24个函数 ：</p>
+<pre><code>size_type find_first_of(const basic_string&amp; s, size_type pos = 0)
+size_type find_first_of(const charT* s, size_type pos, size_type n)
+size_type find_first_of(const charT* s, size_type pos = 0)
+size_type find_first_of(charT c, size_type pos = 0)
+</code></pre><p>所有的查找函数都返回一个size_type类型，这个返回值一般都是所找到字符串的位置，如果没有找到，则返回string::npos。有一点需要特别注意，所有和string::npos的比较一定要用string::size_type来使用，不要直接使用int 或者unsigned int等类型。其实string::npos表示的是-1, 看看头文件：</p>
+<pre><code>template &lt;class _CharT, class _Traits, class _Alloc&gt;
+const basic_string&lt;_CharT,_Traits,_Alloc&gt;::size_type
+basic_string&lt;_CharT,_Traits,_Alloc&gt;::npos
+= basic_string&lt;_CharT,_Traits,_Alloc&gt;::size_type) -1;
+</code></pre><p>find 和 rfind 都还比较容易理解，一个是正向匹配，一个是逆向匹配，后面的参数pos都是用来指定起始查找位置。对于find_first_of 和find_last_of 就不是那么好理解。</p>
+<p>find_first_of 是给定一个要查找的字符集，找到这个字符集中任何一个字符所在字符串中第一个位置。或许看一个例子更容易明白。</p>
+<p>有这样一个需求：过滤一行开头和结尾的所有非英文字符。看看用string 如何实现：</p>
+<pre><code>#include &lt;string&gt;
+#include &lt;iostream&gt;
+using namespace std;
+int main()
+{
+    string strinfo=&quot; //*---Hello Word!......------&quot;;
+    string strset=&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz&quot;;
+    int first = strinfo.find_first_of(strset);
+    if(first == string::npos)
+    {
+        cout&lt;&lt;&quot;not find any characters&quot;&lt;&lt;endl;
+        return -1;
+    }
+    int last = strinfo.find_last_of(strset);
+    if(last == string::npos)
+    {
+        cout&lt;&lt;&quot;not find any characters&quot;&lt;&lt;endl;
+        return -1;
+    }
+    cout &lt;&lt; strinfo.substr(first, last - first + 1)&lt;&lt;endl;
+    return 0;
+}
+</code></pre><p>这里把所有的英文字母大小写作为了需要查找的字符集，先查找第一个英文字母的位置，然后查找最后一个英文字母的位置，然后用substr 来的到中间的一部分，用于输出结果。下面就是其结果：</p>
+<p>Hello Word<br>前面的符号和后面的符号都没有了。像这种用法可以用来查找分隔符，从而把一个连续的字符串分割成为几部分，达到 shell 命令中的 awk 的用法。特别是当分隔符有多个的时候，可以一次指定。例如有这样的需求：</p>
+<p>张三|3456123, 湖南<br>李四,4564234| 湖北<br>王小二, 4433253|北京<br>…<br>我们需要以 “|” “,”为分隔符，同时又要过滤空格，把每行分成相应的字段。可以作为你的一个作业来试试，要求代码简洁。</p>
+<h2 id="string-insert-replace-erase"><a href="#string-insert-replace-erase" class="headerlink" title="string insert, replace, erase"></a>string insert, replace, erase</h2><p>了解了string 的操作符，查找函数和substr，其实就已经了解了string的80%的操作了。insert函数, replace函数和erase函数在使用起来相对简单。下面以一个例子来说明其应用。 string只是提供了按照位置和区间的replace函数，而不能用一个string字串来替换指定string中的另一个字串。这里写一个函数来实现这个功能：</p>
+<pre><code>void string_replace(string &amp; strBig, const string &amp; strsrc, const string &amp;strdst)
+{
+    string::size_type pos=0;
+    string::size_type srclen=strsrc.size();
+    string::size_type dstlen=strdst.size();
+    while( (pos=strBig.find(strsrc, pos)) != string::npos)
+    {
+        strBig.replace(pos, srclen, strdst);
+        pos += dstlen;
+    }
+}
+</code></pre><p>看看如何调用：</p>
+<pre><code>#include &lt;string&gt;
+#include &lt;iostream&gt;
+using namespace std;
+int main()
+{
+    string strinfo=&quot;This is Winter, Winter is a programmer. Do you know Winter?&quot;;
+    cout&lt;&lt;&quot;Orign string is :\n&quot;&lt;&lt;strinfo&lt;&lt;endl;
+    string_replace(strinfo, &quot;Winter&quot;, &quot;wende&quot;);
+    cout&lt;&lt;&quot;After replace Winter with wende, the string is :\n&quot;&lt;&lt;strinfo&lt;&lt;endl;
+    return 0;
+}
+</code></pre><p>其输出结果：</p>
+<pre><code>Orign string is :
+This is Winter, Winter is a programmer. Do you know Winter?
+After relace Winter with wende, the string is :
+This is wende, wende is a programmer. Do you know wende?
+</code></pre><p>如果不用replace函数，则可以使用erase和insert来替换，也能实现string_replace函数的功能：</p>
+<pre><code>void string_replace(string &amp; strBig, const string &amp; strsrc, const string &amp;strdst)
+{
+    string::size_type pos=0;
+    string::size_type srclen=strsrc.size();
+    string::size_type dstlen=strdst.size();
+    while( (pos=strBig.find(strsrc, pos)) != string::npos)
+    {
+        strBig.erase(pos, srclen);
+        strBig.insert(pos, strdst);
+        pos += dstlen;
+    }
+}
+</code></pre><p>当然，这种方法没有使用replace来得直接。</p>
+<h3 id="string-和C-style字符串"><a href="#string-和C-style字符串" class="headerlink" title="string 和C-style字符串"></a>string 和C-style字符串</h3><p>现在看了这么多例子，发现const char* 可以和string 直接转换，例如我们在上面的例子中，使用</p>
+<p><code>string_replace(strinfo, &quot;Winter&quot;, &quot;wende&quot;);</code>来代用<code>void string_replace(string &amp; strBig, const string &amp; strsrc, const string &amp;strdst)</code><br>在C语言中只有char 和 const char，为了使用起来方便，string提供了三个函数满足其要求：</p>
+<pre><code>const charT* c_str() const
+const charT* data() const
+size_type copy(charT* buf, size_type n, size_type pos = 0) const
+</code></pre><p>其中： <code>c_str</code> 直接返回一个以\0结尾的字符串。 <code>data</code>直接以数组方式返回string的内容，其大小为<code>size()</code>的返回值，结尾并没有\0字符。 <code>copy</code>把string的内容拷贝到buf空间中。 你或许会问，<code>c_str()</code>的功能包含<code>data()</code>，那还需要<code>data()</code>函数干什么？看看源码：</p>
+<pre><code>const charT* c_str () const
+{
+    if (length () == 0)
+        return &quot;&quot;;
+    terminate ();
+    return data ();
+}
+</code></pre><p>原来<code>c_str()</code>的流程是：先调用<code>terminate()</code>，然后在返回<code>data()</code>。因此如果你对效率要求比较高，而且你的处理又不一定需要以<code>\0</code>的方式结束，你最好选择<code>data()</code>。但是对于一般的C函数中，需要以<code>const char*</code>为输入参数，你就要使用<code>c_str()</code>函数。</p>
+<p>对于<code>c_str()</code> <code>data()</code>函数，返回的数组都是由string本身拥有，千万不可修改其内容。其原因是许多string实现的时候采用了引用机制，也就是说，有可能几个string使用同一个字符存储空间。而且你不能使用sizeof(string)来查看其大小。详细的解释和实现查看Effective STL的条款15：小心string实现的多样性。</p>
+<p>另外在你的程序中，只在需要时才使用c_str()或者data()得到字符串，每调用一次，下次再使用就会失效，如：</p>
+<pre><code>string strinfo(&quot;this is Winter&quot;);
+...
+//最好的方式是:
+foo(strinfo.c_str());
+//也可以这么用:
+const char* pstr=strinfo.c_str();
+foo(pstr);
+//不要再使用了pstr了, 下面的操作已经使pstr无效了。
+strinfo += &quot; Hello!&quot;;
+foo(pstr);//错误！
+</code></pre><p>会遇到什么错误？当你幸运的时候pstr可能只是指向”this is Winter Hello!”的字符串，如果不幸运，就会导致程序出现其他问题，总会有一些不可遇见的错误。总之不会是你预期的那个结果。</p>
+<p>3 string 和 Charactor Traits 了解了string的用法，该详细看看string的真相了。前面提到string 只是basic_string的一个typedef。看看basic_string 的参数：</p>
+<pre><code>template &lt;class charT, class traits = char_traits&lt;charT&gt;,
+class Allocator = allocator&lt;charT&gt; &gt;
+class basic_string
+{
+//...
+}
+</code></pre><p>char_traits不仅是在basic_string 中有用，在basic_istream 和 basic_ostream中也需要用到。 就像Steve Donovan在过度使用C++模板中提到的，这些确实有些过头了，要不是系统自己定义了相关的一些属性，而且用了个typedef，否则还真不知道如何使用。</p>
+<p>但复杂总有复杂道理。有了<code>char_traits</code>，你可以定义自己的字符串类型。当然，有了<code>char_traits &lt; char &gt;</code> 和<code>char_traits &lt; wchar_t &gt;</code>你的需求使用已经足够了，为了更好的理解string ，咱们来看看<code>char_traits</code>都有哪些要求。</p>
+<p>如果你希望使用你自己定义的字符，你必须定义包含下列成员的结构： 表达式 描述</p>
+<pre><code>char_type 字符类型
+int_type int 类型
+pos_type 位置类型
+off_type 表示位置之间距离的类型
+state_type 表示状态的类型
+assign(c1,c2) 把字符c2赋值给c1
+eq(c1,c2) 判断c1,c2 是否相等
+lt(c1,c2) 判断c1是否小于c2
+length(str) 判断str的长度
+compare(s1,s2,n) 比较s1和s2的前n个字符
+copy(s1,s2, n) 把s2的前n个字符拷贝到s1中
+move(s1,s2, n) 把s2中的前n个字符移动到s1中
+assign(s,n,c) 把s中的前n个字符赋值为c
+find(s,n,c) 在s的前n个字符内查找c
+eof() 返回end-of-file
+to_int_type(c) 将c转换成int_type
+to_char_type(i) 将i转换成char_type
+not_eof(i) 判断i是否为EOF
+eq_int_type(i1,i2) 判断i1和i2是否相等
+</code></pre><p>想看看实际的例子，你可以看看sgi STL的char_traits结构源码.</p>
+<p>现在默认的string版本中，并不支持忽略大小写的比较函数和查找函数，如果你想练练手，你可以试试改写一个char_traits , 然后生成一个case_string类, 也可以在string 上做继承，然后派生一个新的类，例如：ext_string，提供一些常用的功能，例如：</p>
+<p>定义分隔符。给定分隔符，把string分为几个字段。 提供替换功能。例如，用winter, 替换字符串中的wende 大小写处理。例如，忽略大小写比较，转换等 整形转换。例如把”123”字符串转换为123数字。 这些都是常用的功能，如果你有兴趣可以试试。其实有人已经实现了，看看Extended STL string。如果你想偷懒，下载一个头文件就可以用，有了它确实方便了很多。要是有人能提供一个支持正则表达式的string，我会非常乐意用。</p>
+<p>4 string 建议 使用string 的方便性就不用再说了，这里要重点强调的是string的安全性。 string并不是万能的，如果你在一个大工程中需要频繁处理字符串，而且有可能是多线程，那么你一定要慎重(当然，在多线程下你使用任何STL容器都要慎重)。 string的实现和效率并不一定是你想象的那样，如果你对大量的字符串操作，而且特别关心其效率，那么你有两个选择，首先，你可以看看你使用的STL版本中string实现的源码；另一选择是你自己写一个只提供你需要的功能的类。 string的c_str()函数是用来得到C语言风格的字符串，其返回的指针不能修改其空间。而且在下一次使用时重新调用获得新的指针。 string的data()函数返回的字符串指针不会以’\0’结束，千万不可忽视。 尽量去使用操作符，这样可以让程序更加易懂</p>
+<p>5 小结 难怪有人说：string 使用方便功能强，我们一直用它！</p>
+<p>6 附录</p>
+<pre><code>string 函数列表 函数名 描述
+begin 得到指向字符串开头的Iterator
+end 得到指向字符串结尾的Iterator
+rbegin 得到指向反向字符串开头的Iterator
+rend 得到指向反向字符串结尾的Iterator
+size 得到字符串的大小
+length 和size函数功能相同
+max_size 字符串可能的最大大小
+capacity 在不重新分配内存的情况下，字符串可能的大小
+empty 判断是否为空
+operator[] 取第几个元素，相当于数组
+c_str 取得C风格的const char* 字符串
+data 取得字符串内容地址
+operator= 赋值操作符
+reserve 预留空间
+swap 交换函数
+insert 插入字符
+append 追加字符
+push_back 追加字符
+operator+= += 操作符
+erase 删除字符串
+clear 清空字符容器中所有内容
+resize 重新分配空间
+assign 和赋值操作符一样
+replace 替代
+copy 字符串到空间
+find 查找
+rfind 反向查找
+find_first_of 查找包含子串中的任何字符，返回第一个位置
+find_first_not_of 查找不包含子串中的任何字符，返回第一个位置
+find_last_of 查找包含子串中的任何字符，返回最后一个位置
+find_last_not_of 查找不包含子串中的任何字符，返回最后一个位置
+substr 得到字串
+compare 比较字符串
+operator+ 字符串链接
+operator== 判断是否相等
+operator!= 判断是否不等于
+operator&lt; 判断是否小于
+operator&gt;&gt; 从输入流中读入字符串
+operator&lt;&lt; 字符串写入输出流
+getline 从输入流中读入一行
+</code></pre><p>///////////////////////////////////////////////////////////////////////////////////</p>
+<p>之所以抛弃char*的字符串而选用C++标准程序库中的string类，是因为他和前者比较起来，不必担心内存是否足够、字符串长度等等，而且作为一个类出现，他集成的操作函数足以完成我们大多数情况下(甚至是100%)的需要。我们可以用 = 进行赋值操作，== 进行比较，+ 做串联（是不是很简单?）。我们尽可以把它看成是C++的基本数据类型。 好了，进入正题……… 首先，为了在我们的程序中使用string类型，我们必须包含头文件 。如下：</p>
+<pre><code>#include &lt;string&gt; //注意这里不是string.h string.h是C字符串头文件
+</code></pre><h2 id="声明一个C-字符串"><a href="#声明一个C-字符串" class="headerlink" title="声明一个C++字符串"></a>声明一个C++字符串</h2><p>声明一个字符串变量很简单：</p>
+<pre><code>string Str;
+</code></pre><p>这样我们就声明了一个字符串变量，但既然是一个类，就有构造函数和析构函数。上面的声明没有传入参数，所以就直接使用了string的默认的构造函数，这个函数所作的就是把Str初始化为一个空字符串。String类的构造函数和析构函数如下：</p>
+<pre><code>a)    string s;  //生成一个空字符串s
+b)    string s(str) //拷贝构造函数 生成str的复制品
+c)    string s(str,stridx) //将字符串str内“始于位置stridx”的部分当作字符串的初值
+d)    string s(str,stridx,strlen) //将字符串str内“始于stridx且长度顶多strlen”的部分作为字符串的初值
+e)    string s(cstr) //将C字符串作为s的初值
+f)    string s(chars,chars_len) //将C字符串前chars_len个字符作为字符串s的初值。
+g)    string s(num,c) //生成一个字符串，包含num个c字符
+h)    string s(beg,end) //以区间beg;end(不包含end)内的字符作为字符串s的初值
+i)    s.~string() //销毁所有字符，释放内存
+</code></pre><p>都很简单，我就不解释了。</p>
+<h2 id="字符串操作函数"><a href="#字符串操作函数" class="headerlink" title="字符串操作函数"></a>字符串操作函数</h2><p> 这里是C++字符串的重点，我先把各种操作函数罗列出来，不喜欢把所有函数都看完的人可以在这里找自己喜欢的函数，再到后面看他的详细解释。</p>
+<pre><code>a) =,assign()   //赋以新值
+b) swap()   //交换两个字符串的内容
+c) +=,append(),push_back() //在尾部添加字符
+d) insert() //插入字符
+e) erase() //删除字符
+f) clear() //删除全部字符
+g) replace() //替换字符
+h) + //串联字符串
+i) ==,!=,&lt;,&lt;=,&gt;,&gt;=,compare()  //比较字符串
+j) size(),length()  //返回字符数量
+k) max_size() //返回字符的可能最大个数
+l) empty()  //判断字符串是否为空
+m) capacity() //返回重新分配之前的字符容量
+n) reserve() //保留一定量内存以容纳一定数量的字符
+o) [ ], at() //存取单一字符
+p) &gt;&gt;,getline() //从stream读取某值
+q) &lt;&lt;  //将谋值写入stream
+r) copy() //将某值赋值为一个C_string
+s) c_str() //将内容以C_string返回
+t) data() //将内容以字符数组形式返回
+u) substr() //返回某个子字符串
+v)查找函数
+w)begin() end() //提供类似STL的迭代器支持
+x) rbegin() rend() //逆向迭代器
+y) get_allocator() //返回配置器
+</code></pre><p>下面详细介绍：</p>
+<h2 id="C-字符串和C字符串的转换"><a href="#C-字符串和C字符串的转换" class="headerlink" title="C++字符串和C字符串的转换"></a>C++字符串和C字符串的转换</h2><p>C++提供的由C++字符串得到对应的<code>C_string</code>的方法是使用<code>data()、c_str()和copy()</code>，其中，<code>data()</code>以字符数组的形式返回字符串内容，但并不添加<code>’\0’</code>。<code>c_str()</code>返回一个以‘\0’结尾的字符数组，而<code>copy()</code>则把字符串的内容复制或写入既有的<code>c_string</code> 或字符数组内。C++字符串并不以’\0’结尾。我的建议是在程序中能使用C++字符串就使用，除非万不得已不选用c_string。由于只是简单介绍，详细介绍掠过，谁想进一步了解使用中的注意事项可以给我留言(到我的收件箱)。我详细解释。</p>
+<h2 id="大小和容量函数"><a href="#大小和容量函数" class="headerlink" title="大小和容量函数"></a>大小和容量函数</h2><p> 一个C++字符串存在三种大小：</p>
+<ol>
+<li>现有的字符数，函数是size()和length()，他们等效。Empty()用来检查字符串是否为空。 </li>
+<li><code>max_size()</code> 这个大小是指当前C++字符串最多能包含的字符数，很可能和机器本身的限制或者字符串所在位置连续内存的大小有关系。我们一般情况下不用关心他，应该大小足够我们用的。但是不够用的话，会抛出length_error异常</li>
+<li>capacity()重新分配内存之前 string所能包含的最大字符数。这里另一个需要指出的是reserve()函数，这个函数为string重新分配内存。重新分配的大小由其参数决定，默认参数为0，这时候会对string进行非强制性缩减。</li>
+</ol>
+<p>还有必要再重复一下C++字符串和C字符串转换的问题，许多人会遇到这样的问题，自己做的程序要调用别人的函数、类什么的（比如数据库连接函数 <code>Connect(char,char)</code>），但别人的函数参数用的是char形式的，而我们知道，<code>c_str()、data()</code>返回的字符数组由该字符串拥有，所以是一种const char,要想作为上面提及的函数的参数，还必须拷贝到一个<code>char</code>,而我们的原则是能不使用C字符串就不使用。那么，这时候我们的处理方式是：如果此函数对参数(也就是<code>char</code>)的内容不修改的话，我们可以这样<code>Connect((char)UserID.c_str(), (char)PassWD.c_str())</code>,但是这时候是存在危险的，因为这样转换后的字符串其实是可以修改的（有兴趣地可以自己试一试），所以我强调除非函数调用的时候不对参数进行修改，否则必须拷贝到一个<code>char</code>上去。当然，更稳妥的办法是无论什么情况都拷贝到一个<code>char</code>上去。同时我们也祈祷现在仍然使用C字符串进行编程的高手们（说他们是高手一点儿也不为过，也许在我们还穿开裆裤的时候他们就开始编程了，哈哈…）写的函数都比较规范，那样我们就不必进行强制转换了。</p>
+<h2 id="元素存取"><a href="#元素存取" class="headerlink" title="元素存取"></a>元素存取</h2><p>我们可以使用下标操作符[]和函数at()对元素包含的字符进行访问。但是应该注意的是操作符[]并不检查索引是否有效（有效索引 <code>0~str.length()</code>），如果索引失效，会引起未定义的行为。而<code>at()</code>会检查，如果使用<code>at()</code>的时候索引无效，会抛出 <code>out_of_range</code>异常。 有一个例外不得不说，<code>const string a</code>;的操作符[]对索引值是<code>a.length()</code>仍然有效，其返回值是<code>’\0’</code>。其他的各种情况，<code>a.length()</code>索引都是无效的。举例如下：</p>
+<pre><code>const string Cstr(“const string”);
+string Str(“string”);
+Str[3];    //ok
+Str.at(3);  //ok
+Str[100]; //未定义的行为
+Str.at(100);  //throw out_of_range
+Str[Str.length()]  //未定义行为
+Cstr[Cstr.length()] //返回 ‘\0’
+Str.at(Str.length());//throw out_of_range
+Cstr.at(Cstr.length()) ////throw out_of_range
+我不赞成类似于下面的引用或指针赋值： char&amp; r=s[2]; char* p= &amp;s[3];
+</code></pre><p>因为一旦发生重新分配，r,p立即失效。避免的方法就是不使用。</p>
+<h2 id="比较函数"><a href="#比较函数" class="headerlink" title="比较函数"></a>比较函数</h2><p>C++字符串支持常见的比较操作符<code>&gt;,&gt;=,&lt;,&lt;=,==,!=</code>，甚至支持string与C-string的比较,如 <code>str&lt;”hello”</code>。在使用<code>&gt;,&gt;=,&lt;,&lt;=</code>这些操作符的时候是根据“当前字符特性”将字符按字典顺序进行逐一得比较。字典排序靠前的字符小，比较的顺序是从前向后比较，遇到不相等的字符就按这个位置上的两个字符的比较结果确定两个字符串的大小。同时，<code>string(“aaaa”) &lt;string(aaaaa)</code>。 另一个功能强大的比较函数是成员函数compare()。他支持多参数处理，支持用索引值和长度定位子串来进行比较。他返回一个整数来表示比较结果，返回值意义如下：0-相等 〉0-大于 &lt;0-小于。举例如下：</p>
+<pre><code>string s(“abcd”);
+s.compare(“abcd”); //返回0
+s.compare(“dcba”); //返回一个小于0的值
+s.compare(“ab”); //返回大于0的值
+s.compare(s); //相等
+s.compare(0,2,s,2,2); //用”ab”和”cd”进行比较 小于零
+s.compare(1,2,”bcx”,2); //用”bc”和”bc”比较。
+</code></pre><p>怎么样？功能够全的吧！什么？还不能满足你的胃口？好吧，那等着，后面有更个性化的比较算法。先给个提示，使用的是STL的比较算法。什么？对STL一窍不通？你重修吧！</p>
+<h2 id="更改内容"><a href="#更改内容" class="headerlink" title="更改内容"></a>更改内容</h2><p>这在字符串的操作中占了很大一部分。 首先讲赋值，第一个赋值方法当然是使用操作符=，新值可以是string(如：s=ns) 、c_string(如：s=”gaint”)甚至单一字符（如：s=’j’）。还可以使用成员函数assign()，这个成员函数可以使你更灵活的对字符串赋值。还是举例说明吧：</p>
+<pre><code>s.assign(str); //直接
+s.assign(str,1,3);//如果str是”iamangel” 就是把”ama”赋给字符串
+s.assign(str,2,string::npos);//把字符串str从索引值2开始到结尾赋给s
+s.assign(“gaint”); //不说
+s.assign(“nico”,5);//把’n’ ‘I’ ‘c’ ‘o’ ‘\0’赋给字符串
+s.assign(5,’x’);//把五个x赋给字符串
+</code></pre><p>把字符串清空的方法有三个：s=””;s.clear();s.erase();(我越来越觉得举例比说话让别人容易懂！)。 string提供了很多函数用于插入（insert）、删除（erase）、替换（replace）、增加字符。 先说增加字符（这里说的增加是在尾巴上），函数有 +=、append()、push_back()。举例如下：</p>
+<pre><code>s+=str;//加个字符串
+s+=”my name is jiayp”;//加个C字符串
+s+=’a’;//加个字符
+s.append(str);
+s.append(str,1,3);//不解释了 同前面的函数参数assign的解释
+s.append(str,2,string::npos)//不解释了
+s.append(“my name is jiayp”);
+s.append(“nico”,5);
+s.append(5,’x’);
+s.push_back(‘a’);//这个函数只能增加单个字符 对STL熟悉的理解起来很简单
+</code></pre><p>也许你需要在string中间的某个位置插入字符串，这时候你可以用insert()函数，这个函数需要你指定一个安插位置的索引，被插入的字符串将放在这个索引的后面。</p>
+<pre><code>s.insert(0,”my name”);
+s.insert(1,str);
+</code></pre><p>这种形式的insert()函数不支持传入单个字符，这时的单个字符必须写成字符串形式(让人恶心)。既然你觉得恶心，那就不得不继续读下面一段话：为了插入单个字符，insert()函数提供了两个对插入单个字符操作的重载函数：</p>
+<pre><code>insert(size_type index,size_type num,chart c)
+insert(iterator pos,size_type num,chart c)。
+</code></pre><p>其中<code>size_type</code>是无符号整数，<code>iterator</code>是<code>char*</code>,所以，你这么调用<code>insert</code>函数是不行的：<code>insert(0,1,’j’);</code>这时候第一个参数将转换成哪一个呢？所以你必须这么写：<code>insert((string::size_type)0,1,’j’)</code>！第二种形式指出了使用迭代器安插字符的形式，在后面会提及。顺便提一下，string有很多操作是使用STL的迭代器的，他也尽量做得和STL靠近。 删除函数erase()的形式也有好几种（真烦！），替换函数replace()也有好几个。举例吧：</p>
+<pre><code>string s=”il8n”;
+s.replace(1,2,”nternationalizatio”);//从索引1开始的2个替换成后面的C_string
+s.erase(13);//从索引13开始往后全删除
+s.erase(7,5);//从索引7开始往后删5个
+</code></pre><h2 id="提取子串和字符串连接"><a href="#提取子串和字符串连接" class="headerlink" title="提取子串和字符串连接"></a>提取子串和字符串连接</h2><p>题取子串的函数是：substr(),形式如下：</p>
+<pre><code>s.substr();//返回s的全部内容
+s.substr(11);//从索引11往后的子串
+s.substr(5,6);//从索引5开始6个字符
+</code></pre><p>把两个字符串结合起来的函数是+。（谁不明白请致电120）</p>
+<h2 id="输入输出操作"><a href="#输入输出操作" class="headerlink" title="输入输出操作"></a>输入输出操作</h2><p>1．<code>&gt;&gt;</code> 从输入流读取一个string。<br>2．<code>&lt;&lt;</code> 把一个string写入输出流。 另一个函数就是<code>getline()</code>,他从输入流读取一行内容，直到遇到分行符或到了文件尾。</p>
+<h2 id="搜索与查找"><a href="#搜索与查找" class="headerlink" title="搜索与查找"></a>搜索与查找</h2><p>查找函数很多，功能也很强大，包括了：</p>
+<pre><code>find()
+rfind()
+find_first_of()
+find_last_of()
+find_first_not_of()
+find_last_not_of()
+</code></pre><p>这些函数返回符合搜索条件的字符区间内的第一个字符的索引，没找到目标就返回<code>npos</code>。所有的函数的参数说明如下： 第一个参数是被搜寻的对象。第二个参数（可有可无）指出string内的搜寻起点索引，第三个参数（可有可无）指出搜寻的字符个数。比较简单，不多说 不理解的可以向我提出，我再仔细的解答。当然，更加强大的STL搜寻在后面会有提及。 最后再说说<code>npos</code>的含义，<code>string::npos</code>的类型是<code>string::size_type</code>,所以，一旦需要把一个索引与<code>npos</code>相比，这个索引值必须是string::size)type类型的，更多的情况下，我们可以直接把函数和<code>npos</code>进行比较（如：<code>if(s.find(“jia”)==string::npos)</code>）。</p>
+<p>任何人对本文进行引用都要标明作者是Nicolai M.Josuttis 译者是侯捷/孟岩</p>
+
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/string/" rel="tag">#string</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/07/05/computationGeometry/" rel="next" title="计算几何">
+                <i class="fa fa-chevron-left"></i> 计算几何
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/08/10/first-year-in-college/" rel="prev" title="过去一年">
+                过去一年 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/logo.png" alt="STay">
+          <p class="site-author-name" itemprop="name">STay</p>
+          <p class="site-description motion-element" itemprop="description">當智慧驕傲到不肯哭泣，莊嚴到不肯歡樂，自滿到不肯看人，就不成爲智慧了。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">27</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">40</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/stayinloves" target="_blank" title="Github">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/1954263781" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons">
+            </a>
+          </div>
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element">
+            <div class="links-of-blogroll-title">
+              <i class="fa fa-globe fa-fw"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://fanzheng.org" title="膜范神" target="_blank">膜范神</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://imnerd.org" title="怡红院落" target="_blank">怡红院落</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://xuanwo.org" title="xuanwo's blog" target="_blank">xuanwo's blog</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#string-使用"><span class="nav-number">1.</span> <span class="nav-text">string 使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#充分使用string-操作符"><span class="nav-number">1.1.</span> <span class="nav-text">充分使用string 操作符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#眼花缭乱的string-find-函数"><span class="nav-number">1.2.</span> <span class="nav-text">眼花缭乱的string find 函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#string-insert-replace-erase"><span class="nav-number">1.3.</span> <span class="nav-text">string insert, replace, erase</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#string-和C-style字符串"><span class="nav-number">1.3.1.</span> <span class="nav-text">string 和C-style字符串</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#声明一个C-字符串"><span class="nav-number">1.4.</span> <span class="nav-text">声明一个C++字符串</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串操作函数"><span class="nav-number">1.5.</span> <span class="nav-text">字符串操作函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-字符串和C字符串的转换"><span class="nav-number">1.6.</span> <span class="nav-text">C++字符串和C字符串的转换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#大小和容量函数"><span class="nav-number">1.7.</span> <span class="nav-text">大小和容量函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#元素存取"><span class="nav-number">1.8.</span> <span class="nav-text">元素存取</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#比较函数"><span class="nav-number">1.9.</span> <span class="nav-text">比较函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更改内容"><span class="nav-number">1.10.</span> <span class="nav-text">更改内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#提取子串和字符串连接"><span class="nav-number">1.11.</span> <span class="nav-text">提取子串和字符串连接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输入输出操作"><span class="nav-number">1.12.</span> <span class="nav-text">输入输出操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#搜索与查找"><span class="nav-number">1.13.</span> <span class="nav-text">搜索与查找</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">STay</span>
+</div>
+
+<div class="powered-by">
+   <a class="theme-link" href="http://hexo.io">Hexo</a> 
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'stayinloves';
+      var disqus_identifier = '2016/07/17/string/';
+      var disqus_title = 'string';
+      var disqus_url = 'http://stay.wiki/2016/07/17/string/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';                
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+                            
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').mousedown(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+  
+
+  
+
+  
+
+</body>
+</html>

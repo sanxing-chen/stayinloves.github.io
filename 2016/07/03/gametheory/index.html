@@ -1,0 +1,876 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Slabo 27px:300,300italic,400,400italic,700,700italic|Amatic SC:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="ACM,博弈论,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1">
+
+
+
+
+
+
+<meta name="description" content="假期集训题整理系列">
+<meta name="keywords" content="ACM,博弈论">
+<meta property="og:type" content="article">
+<meta property="og:title" content="博弈论">
+<meta property="og:url" content="http://stay.wiki/2016/07/03/gametheory/index.html">
+<meta property="og:site_name" content="STay&#39;s Blog">
+<meta property="og:description" content="假期集训题整理系列">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-01-29T21:47:05.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="博弈论">
+<meta name="twitter:description" content="假期集训题整理系列">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 博弈论 | STay's Blog </title>
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-76805514-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">STay's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Just is a normal Blog.</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-board">
+          <a href="/board" rel="section">
+            
+              <i class="menu-item-icon fa fa-heart fa-fw"></i> <br>
+            
+            留言
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                博弈论
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-03T02:04:05+08:00" content="2016-07-03">
+              2016-07-03
+            </time>
+          </span>
+
+          
+            <span class="post-category">
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope="" itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/03/gametheory/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/07/03/gametheory/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>假期集训题整理系列<br><a id="more"></a><br><a href="http://acm.hust.edu.cn/vjudge/contest/view.action?cid=120420" target="_blank" rel="noopener">博弈论</a></p>
+<h1 id="Problem-A"><a href="#Problem-A" class="headerlink" title="Problem A"></a>Problem A</h1><p>裸nim博弈，各石子堆数目亦或后为0的状态为必败点，反之为必胜点。</p>
+<p>必胜点一点可以通过改变其中某一点(可能存在多点)的值，使得其亦或的新结果为0，具体的改变方法即将某点(设为<code>s[i]</code>)的值改为(<code>s[i]^k</code>)，这样新的亦或结果为<code>s[0]^s[1]^...s[i]^k^...s[m]</code>即<code>k^k</code>即0。因为石子堆的数目只能减少不能增加，所以要求<code>s[i]^k</code>小于<code>s[i]</code>。</p>
+<pre><code><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> s[<span class="number">200010</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> m;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">cin</span>&gt;&gt;m &amp;&amp; m) &#123;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;s[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">int</span> k = s[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; m; ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">cin</span>&gt;&gt;s[i];</span><br><span class="line">            k = k ^ s[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (k == <span class="number">0</span>)</span><br><span class="line">            <span class="built_in">puts</span>(<span class="string">"No"</span>);</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">puts</span>(<span class="string">"Yes"</span>);</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; ++i)</span><br><span class="line">                <span class="keyword">if</span> ((s[i]^k) &lt; s[i])</span><br><span class="line">                    <span class="built_in">cout</span>&lt;&lt;s[i]&lt;&lt;<span class="string">' '</span>&lt;&lt;(s[i]^k)&lt;&lt;<span class="built_in">endl</span>; <span class="comment">//亦或可能会与&gt;&lt;作用，需加括号</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</code></pre><h1 id="Problem-B"><a href="#Problem-B" class="headerlink" title="Problem B"></a>Problem B</h1><p>裸威佐夫博奕</p>
+<p>可直接由必败态公式得解</p>
+<pre><code><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ll a,b;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">cin</span>&gt;&gt;a&gt;&gt;b) &#123;</span><br><span class="line">        <span class="keyword">if</span> (a&gt;b)    <span class="comment">//必须大小判断</span></span><br><span class="line">            swap(a,b);</span><br><span class="line">        b -= a;</span><br><span class="line">        <span class="keyword">if</span> (a == (ll)(b*(<span class="number">1</span>+<span class="built_in">sqrt</span>(<span class="number">5</span>))/<span class="number">2</span>))</span><br><span class="line">            <span class="built_in">cout</span>&lt;&lt;<span class="number">0</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="built_in">cout</span>&lt;&lt;<span class="number">1</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</code></pre><h1 id="Problem-C"><a href="#Problem-C" class="headerlink" title="Problem C"></a>Problem C</h1><p>裸巴什博弈</p>
+<p>易知<code>石子数%(最多取子数+1) == 0</code>时为必败态。</p>
+<p>特判取子数多于石子数的情况。</p>
+<pre><code><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ll a,b;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">cin</span>&gt;&gt;a&gt;&gt;b) &#123;</span><br><span class="line">        <span class="keyword">if</span> (b &gt; a)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span> (ll i = a; i &lt;= b; ++i)</span><br><span class="line">                <span class="built_in">cout</span>&lt;&lt;i&lt;&lt;<span class="string">" \n"</span>[i == b];</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!(a%(b+<span class="number">1</span>)))</span><br><span class="line">            <span class="built_in">puts</span>(<span class="string">"none"</span>);</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="built_in">cout</span>&lt;&lt;a%(b+<span class="number">1</span>)&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</code></pre><h1 id="Problem-D"><a href="#Problem-D" class="headerlink" title="Problem D"></a>Problem D</h1><p>裸巴什博弈</p>
+<p>题目除最后一句话以外同B题。由于石子数不能增加，只能向下寻找必败点，需要从两种取子方式考虑，注意较大数也能变成较小数。</p>
+<pre><code><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ll a, b, aa, bb;</span><br><span class="line">    <span class="keyword">bool</span> flag;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">cin</span>&gt;&gt;a&gt;&gt;b &amp;&amp; (a+b)) &#123;</span><br><span class="line">        flag = <span class="literal">true</span>;</span><br><span class="line">        bb = b - a;</span><br><span class="line">        <span class="keyword">if</span> (!bb)</span><br><span class="line">            flag = <span class="literal">false</span>;</span><br><span class="line">        aa = bb*(<span class="number">1</span>+<span class="built_in">sqrt</span>(<span class="number">5</span>))/<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span> (a == aa)</span><br><span class="line">            <span class="built_in">cout</span>&lt;&lt;<span class="number">0</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">cout</span>&lt;&lt;<span class="number">1</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">            <span class="keyword">if</span> (aa &lt; a) </span><br><span class="line">                <span class="built_in">cout</span>&lt;&lt;aa&lt;&lt;<span class="string">' '</span>&lt;&lt;b - a + aa&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">            <span class="keyword">for</span> (ll i = a - <span class="number">1</span>; i &gt;= <span class="number">0</span>; --i) <span class="comment">//b不变，从a-1向下遍历</span></span><br><span class="line">            &#123;</span><br><span class="line">                bb = b - i;</span><br><span class="line">                aa = bb*(<span class="number">1</span>+<span class="built_in">sqrt</span>(<span class="number">5</span>))/<span class="number">2</span>;</span><br><span class="line">                <span class="keyword">if</span> (i == aa)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="built_in">cout</span>&lt;&lt;i&lt;&lt;<span class="string">' '</span>&lt;&lt;b&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (aa &gt; i)     <span class="comment">//aa = 常数*(b-i)，等式右边增大，左边减小</span></span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (flag)   <span class="comment">//特判a b相同的情况</span></span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = a - <span class="number">1</span>; i &gt;= <span class="number">0</span>; --i)</span><br><span class="line">                &#123;</span><br><span class="line">                    bb = a - i;</span><br><span class="line">                    aa = bb*(<span class="number">1</span>+<span class="built_in">sqrt</span>(<span class="number">5</span>))/<span class="number">2</span>;</span><br><span class="line">                    <span class="keyword">if</span> (i == aa)</span><br><span class="line">                        <span class="built_in">cout</span>&lt;&lt;i&lt;&lt;<span class="string">' '</span>&lt;&lt;a&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">                    <span class="keyword">if</span> (aa &gt; i)</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</code></pre><h1 id="Problem-E"><a href="#Problem-E" class="headerlink" title="Problem E"></a>Problem E</h1><p>题意为有1到10堆石子，两位玩家轮流选择一堆石子，移去任意颗(此步必须，&gt;0)，再从这堆石子里选择任意颗移到任意有石子的石堆里(此步可选)。</p>
+<p>此题需要通过观察寻找规律。</p>
+<p>不加证明地给出规律:奇数堆后手必败，偶数堆如果可以分成两两相同的n/2堆后手则胜，否则后手败。</p>
+<p>如:一堆时先手直接取完。两堆时若两两相等，则无论先手如何操作，后手都可以做出相应操作使石堆恢复相等的状态;而若两堆不相等，先手直接使石堆相等。后续情况类似。</p>
+<pre><code><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> s[<span class="number">10</span>], n;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">cin</span>&gt;&gt;n &amp;&amp; n) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i)</span><br><span class="line">            <span class="built_in">cin</span>&gt;&gt;s[i];</span><br><span class="line">        <span class="keyword">if</span> (n &amp; <span class="number">1</span>)</span><br><span class="line">            <span class="built_in">cout</span>&lt;&lt;<span class="number">1</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">else</span> </span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">bool</span> flag = <span class="literal">true</span>;</span><br><span class="line">            sort(s, s+n);</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i += <span class="number">2</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (s[i] != s[i+<span class="number">1</span>])</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="built_in">cout</span>&lt;&lt;<span class="number">1</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">                    flag = <span class="literal">false</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (flag)</span><br><span class="line">                <span class="built_in">cout</span>&lt;&lt;<span class="number">0</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</code></pre><h1 id="Problem-F"><a href="#Problem-F" class="headerlink" title="Problem F"></a>Problem F</h1><p>题意为在一个n格的长条上打叉。三子棋。</p>
+<p>易知在第i格打叉后，i-1,i-2,i+1,i+2都不能放了。故状态n可以转化为i-3,n-i-2两种情况</p>
+<p>故可以采用sg标记法进行dfs遍历</p>
+<pre><code><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">int</span> sg[MAX_N];</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span>&amp; x)</span>   <span class="comment">//0为必败态，&gt;0为必胜态</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (x &lt; <span class="number">0</span>)  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span> (sg[x] &gt;= <span class="number">0</span>) <span class="keyword">return</span> sg[x];</span><br><span class="line">    <span class="keyword">bool</span> s[MAX_N] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= x; ++i)</span><br><span class="line">    &#123;</span><br><span class="line">        s[dfs(i - <span class="number">3</span>) ^ dfs(x - i - <span class="number">2</span>)] = <span class="number">1</span>;</span><br><span class="line">        <span class="comment">//标记已有的子态的级数</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; MAX_N; ++i) <span class="comment">//根据sg法，此状态的级数为子态的级数中第一个不存在的自然数。</span></span><br><span class="line">        <span class="keyword">if</span> (s[i] == <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    sg[x] = i;</span><br><span class="line">    <span class="keyword">return</span> sg[x];</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="built_in">memset</span>(sg, <span class="number">-1</span>, <span class="keyword">sizeof</span>(sg));</span><br><span class="line">    dfs(<span class="number">2000</span>); </span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">2000</span>; ++i)</span><br><span class="line">        <span class="keyword">if</span> (sg[i] == <span class="number">0</span>)</span><br><span class="line">            <span class="built_in">cout</span>&lt;&lt;i&lt;&lt;<span class="string">", "</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</code></pre><p>用以上代码打表。</p>
+<pre><code><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">int</span> a[];   <span class="comment">//存放上面打出来的表</span></span><br><span class="line"> <span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="keyword">bool</span> flag;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">cin</span>&gt;&gt;n)</span><br><span class="line">    &#123;</span><br><span class="line">        flag = <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="keyword">sizeof</span>(a)/<span class="keyword">sizeof</span>(<span class="keyword">int</span>); ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (a[i] == n)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="built_in">cout</span>&lt;&lt;<span class="number">2</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">                flag = <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!flag)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">cout</span>&lt;&lt;<span class="number">1</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</code></pre><h1 id="Problem-G"><a href="#Problem-G" class="headerlink" title="Problem G"></a>Problem G</h1><p>找规律</p>
+<pre><code><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">map</span>&lt;<span class="built_in">string</span>,<span class="keyword">int</span>&gt;m;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> t;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;t;</span><br><span class="line">    <span class="keyword">while</span> (t --) &#123;</span><br><span class="line">        m.clear();</span><br><span class="line">        <span class="keyword">int</span> n;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line">        <span class="built_in">string</span> *a;</span><br><span class="line">        a = <span class="keyword">new</span> <span class="built_in">string</span>[n];</span><br><span class="line">        <span class="keyword">int</span> x = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i ++) &#123;</span><br><span class="line">            <span class="built_in">cin</span>&gt;&gt;a[i];</span><br><span class="line">            m[a[i]]++;</span><br><span class="line">            <span class="keyword">if</span> (a[i].length() &amp; <span class="number">1</span>)</span><br><span class="line">                x++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> l = x*(n-x);    <span class="comment">//一奇一偶的情况</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">map</span>&lt;<span class="built_in">string</span>,<span class="keyword">int</span>&gt;::iterator i = m.begin(); i != m.end(); i++)</span><br><span class="line">            l += i-&gt;second * (i-&gt;second - <span class="number">1</span>) / <span class="number">2</span>;   <span class="comment">//两条一样的串的情况</span></span><br><span class="line">        <span class="keyword">int</span> y = n*(n<span class="number">-1</span>)/<span class="number">2</span> - l;</span><br><span class="line">        x = l;</span><br><span class="line">        <span class="keyword">int</span> g = __gcd(x, y);    <span class="comment">//约分</span></span><br><span class="line">        x /= g;</span><br><span class="line">        y /= g;</span><br><span class="line">        <span class="keyword">if</span> (x*<span class="number">1.0</span>/(x+y) == <span class="number">0</span>)</span><br><span class="line">            <span class="built_in">cout</span>&lt;&lt;<span class="string">"0/1"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(!y)</span><br><span class="line">            <span class="built_in">cout</span>&lt;&lt;<span class="string">"1/1"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="built_in">cout</span>&lt;&lt;x&lt;&lt;<span class="string">'/'</span>&lt;&lt;(x+y)&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</code></pre><h1 id="Problem-H"><a href="#Problem-H" class="headerlink" title="Problem H"></a>Problem H</h1><p>此题可以转换为nim博弈。</p>
+<p>将两两组合，若棋子数奇数则将原点视为一个棋子。两两之间的距离作为nim博弈中的石子数。</p>
+<p>nim博弈的子数只能减小不能增加，此题棋子之间的距离虽然会增加，但是增加后作为对手可以马上做抵消操作。若是纯粹的nim博弈，一增一减就会死循环。但此题中因为增加的机会不是无穷无尽的，所以不会死循。</p>
+<pre><code><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> s[<span class="number">1010</span>], x[<span class="number">1010</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> t,n;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">cin</span>&gt;&gt;t)</span><br><span class="line">        <span class="keyword">while</span>(t--) &#123;</span><br><span class="line">            <span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i)</span><br><span class="line">                <span class="built_in">cin</span>&gt;&gt;s[i];</span><br><span class="line">            sort(s, s+n);   <span class="comment">//按照题意应该无需排序，但实测会wa</span></span><br><span class="line">            <span class="keyword">if</span> (n &amp; <span class="number">1</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                x[<span class="number">0</span>] = s[<span class="number">0</span>] - <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>, j = <span class="number">1</span>; i &lt; n; i += <span class="number">2</span>)</span><br><span class="line">                    x[j++] = s[i+<span class="number">1</span>] - s[i] - <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>; i &lt; n; i += <span class="number">2</span>)</span><br><span class="line">                    x[j++] = s[i+<span class="number">1</span>] - s[i] - <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">int</span> k = x[<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; (n+<span class="number">1</span>)/<span class="number">2</span>; ++i)</span><br><span class="line">                k = k ^ x[i];</span><br><span class="line">            <span class="keyword">if</span> (k == <span class="number">0</span>)</span><br><span class="line">                <span class="built_in">puts</span>(<span class="string">"Bob will win"</span>);</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                <span class="built_in">puts</span>(<span class="string">"Georgia will win"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> eps 1e-8</span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">sgn</span><span class="params">(<span class="keyword">const</span> <span class="keyword">double</span> &amp;x)</span> </span>&#123; <span class="keyword">return</span> x &lt; -eps ? <span class="number">-1</span> : x &gt; eps; &#125;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">point</span> &#123;</span></span><br><span class="line">    <span class="keyword">double</span> x, y;</span><br><span class="line">    point(<span class="keyword">const</span> <span class="keyword">double</span> &amp;x = <span class="number">0</span>, <span class="keyword">const</span> <span class="keyword">double</span> &amp;y = <span class="number">0</span>): x(x), y(y) &#123;&#125;</span><br><span class="line">    <span class="keyword">friend</span> point <span class="keyword">operator</span> +  (<span class="keyword">const</span> point  &amp;a, <span class="keyword">const</span> point  &amp;b) &#123; <span class="keyword">return</span> point(a.x + b.x, a.y + b.y); &#125;</span><br><span class="line">    <span class="keyword">friend</span> point <span class="keyword">operator</span> - (<span class="keyword">const</span> point &amp;a, <span class="keyword">const</span> point &amp; b) &#123;<span class="keyword">return</span> point(a.x - b.x, a.y - b.y);&#125;</span><br><span class="line">    <span class="keyword">friend</span> point <span class="keyword">operator</span> *  (<span class="keyword">const</span> point  &amp;a, <span class="keyword">const</span> <span class="keyword">double</span> &amp;b) &#123; <span class="keyword">return</span> point(a.x * b, a.y * b); &#125;</span><br><span class="line">    <span class="keyword">friend</span> point <span class="keyword">operator</span> /  (<span class="keyword">const</span> point  &amp;a, <span class="keyword">const</span> <span class="keyword">double</span> &amp;b) &#123; <span class="keyword">return</span> point(a.x / b, a.y / b); &#125;</span><br><span class="line">    <span class="keyword">friend</span> <span class="keyword">bool</span> <span class="keyword">operator</span> == (<span class="keyword">const</span> point  &amp;a, <span class="keyword">const</span> point  &amp;b)</span><br><span class="line">    &#123; <span class="keyword">return</span> !sgn(a.x - b.x) &amp;&amp; !sgn(a.y - b.y); &#125;</span><br><span class="line">    <span class="keyword">friend</span> <span class="keyword">bool</span> <span class="keyword">operator</span> &lt;  (<span class="keyword">const</span> point  &amp;a, <span class="keyword">const</span> point  &amp;b)</span><br><span class="line">    &#123; <span class="keyword">return</span> sgn(a.x - b.x) &lt; <span class="number">0</span> || (sgn(a.x - b.x) == <span class="number">0</span> &amp;&amp; sgn(a.y - b.y) &lt; <span class="number">0</span>); &#125;</span><br><span class="line">    <span class="function"><span class="keyword">friend</span> <span class="keyword">double</span> <span class="title">det</span><span class="params">(<span class="keyword">const</span> point &amp;a, <span class="keyword">const</span> point &amp;b)</span>   </span>&#123;<span class="keyword">return</span> a.x * b.y - a.y * b.x;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">in</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> ~<span class="built_in">scanf</span>(<span class="string">"%lf%lf"</span>, &amp;x, &amp;y);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">line</span> &#123;</span></span><br><span class="line">    point s, t;</span><br><span class="line">    line(<span class="keyword">const</span> point &amp;s = point(), <span class="keyword">const</span> point &amp;t = point()): s(s), t(t) &#123;&#125;</span><br><span class="line">    <span class="function">point <span class="title">vec</span><span class="params">()</span> <span class="keyword">const</span>   <span class="comment">//方向向量</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> t - s;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">relation</span><span class="params">(<span class="keyword">const</span> point &amp;p)</span>    <span class="comment">//三种返回值2 0 1分别表示在ts的右侧，线上，左侧</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">double</span> res = det(t - s, p - s);</span><br><span class="line">        <span class="keyword">return</span> res &lt; -eps ? <span class="number">2</span> : res &lt; eps;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">sameside</span><span class="params">(<span class="keyword">const</span> point &amp;p1, <span class="keyword">const</span> point &amp; p2)</span>    <span class="comment">//点是否在线的同一边</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> relation(p1) == relation(p2);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">friend</span> <span class="keyword">bool</span> <span class="title">parallel</span> <span class="params">(<span class="keyword">const</span> line &amp;l1, <span class="keyword">const</span> line &amp;l2)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> !sgn(det(l1.vec(), l2.vec()));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">friend</span> point <span class="title">intersection_line_line</span><span class="params">(<span class="keyword">const</span> line &amp;l1, <span class="keyword">const</span> line &amp;l2)</span> <span class="comment">//返回直线与直线的交点</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">double</span> s1 = det(l1.s - l2.s, l2.vec());</span><br><span class="line">        <span class="keyword">double</span> s2 = det(l1.t - l2.s, l2.vec());</span><br><span class="line">        <span class="keyword">return</span> (l1.t * s1 / (s1 - s2) - l1.s * s2 / (s1 - s2));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">is_point_seg</span><span class="params">(<span class="keyword">const</span> point &amp;p)</span> <span class="keyword">const</span> <span class="comment">//点p是否在线段上</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> sgn(det(p - s, t - s)) == <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">friend</span> <span class="keyword">bool</span> <span class="title">is_seg_seg</span><span class="params">(line l1, line l2)</span>    <span class="comment">//线段与线段是否相交</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!sgn(det(l2.s - l1.s, l1.vec())) &amp;&amp; !sgn(det(l2.t - l1.s, l1.vec()))) &#123;</span><br><span class="line">            <span class="keyword">return</span> l1.is_point_seg(l2.s) || l1.is_point_seg(l2.t) || l2.is_point_seg(l1.s) || l2.is_point_seg(l1.t);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> !l1.sameside(l2.s, l2.t) &amp;&amp; !l2.sameside(l1.s, l1.t);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">in</span><span class="params">()</span> </span>&#123;<span class="keyword">return</span> s.in() &amp;&amp; t.in();&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">fuck</span> <span class="params">(point a, point b)</span><span class="comment">//被压在下的部分是否被完全挡住</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (a.x &gt;= <span class="number">0</span> &amp;&amp; b.x &gt;= a.x &amp;&amp; det(a, b) &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (a.x &lt;= <span class="number">0</span> &amp;&amp; b.x &lt;= a.x &amp;&amp; det(a, b) &lt;= <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//tutututututtututututututututututututtutu!!!!!!!</span></span><br><span class="line">    line a, b;</span><br><span class="line">    point p;</span><br><span class="line">    <span class="keyword">int</span> O_O;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; O_O;</span><br><span class="line">    <span class="keyword">while</span> (O_O--) &#123;</span><br><span class="line">        a.in(), b.in();</span><br><span class="line">        <span class="keyword">if</span> (!is_seg_seg(a, b) || parallel(a, b)) &#123;</span><br><span class="line">            <span class="built_in">puts</span>(<span class="string">"0.00"</span>);</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (a.s.y &gt; a.t.y)</span><br><span class="line">            swap(a.s, a.t);</span><br><span class="line">        <span class="keyword">if</span> (b.s.y &gt; b.t.y)</span><br><span class="line">            swap(b.s, b.t);</span><br><span class="line">        point intersecAB = intersection_line_line(a, b);</span><br><span class="line">        <span class="keyword">double</span> ans = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (a.t.y &lt; b.t.y) &#123;</span><br><span class="line">            point lowerA = a.t;</span><br><span class="line">            lowerA.x += <span class="number">1000</span>;</span><br><span class="line">            <span class="function">line <span class="title">paraA</span><span class="params">(lowerA, a.t)</span></span>;    <span class="comment">//过两条直线在上方的端点中较低的端点作平行x轴的直线，此处为a，下同理</span></span><br><span class="line">            <span class="keyword">if</span> (parallel(b, paraA) || fuck(a.t - intersecAB, b.t - intersecAB)) &#123;   <span class="comment">//坑</span></span><br><span class="line">                <span class="built_in">puts</span>(<span class="string">"0.00"</span>);</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            point intersecParaB = intersection_line_line(b, paraA); <span class="comment">//求交点</span></span><br><span class="line">            ans = <span class="built_in">fabs</span>(det (intersecAB - a.t, intersecParaB - a.t)) / <span class="number">2</span>;    <span class="comment">//求三角形面积</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            point lowerB = b.t;</span><br><span class="line">            lowerB.x += <span class="number">1000</span>;</span><br><span class="line">            <span class="function">line <span class="title">paraB</span><span class="params">(lowerB, b.t)</span></span>;</span><br><span class="line">            <span class="keyword">if</span> (parallel(paraB, a) || fuck(b.t - intersecAB, a.t - intersecAB)) &#123;</span><br><span class="line">                <span class="built_in">puts</span>(<span class="string">"0.00"</span>);</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            point intersecParaA = intersection_line_line(a, paraB);</span><br><span class="line">            ans = <span class="built_in">fabs</span>(det(intersecAB - b.t, intersecParaA - b.t)) / <span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (ans &lt; eps) &#123;</span><br><span class="line">            <span class="built_in">puts</span>(<span class="string">"0.00"</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%.2f\n"</span>, ans + eps);    <span class="comment">//坑</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</code></pre>
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ACM/" rel="tag">#ACM</a>
+          
+            <a href="/tags/博弈论/" rel="tag">#博弈论</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/06/28/short-term-sublime/" rel="next" title="一款编辑器Sublime">
+                <i class="fa fa-chevron-left"></i> 一款编辑器Sublime
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/07/04/numbertheory/" rel="prev" title="数论">
+                数论 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/logo.png" alt="STay">
+          <p class="site-author-name" itemprop="name">STay</p>
+          <p class="site-description motion-element" itemprop="description">當智慧驕傲到不肯哭泣，莊嚴到不肯歡樂，自滿到不肯看人，就不成爲智慧了。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">27</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">40</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/stayinloves" target="_blank" title="Github">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/1954263781" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons">
+            </a>
+          </div>
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element">
+            <div class="links-of-blogroll-title">
+              <i class="fa fa-globe fa-fw"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://fanzheng.org" title="膜范神" target="_blank">膜范神</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://imnerd.org" title="怡红院落" target="_blank">怡红院落</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://xuanwo.org" title="xuanwo's blog" target="_blank">xuanwo's blog</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Problem-A"><span class="nav-number">1.</span> <span class="nav-text">Problem A</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Problem-B"><span class="nav-number">2.</span> <span class="nav-text">Problem B</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Problem-C"><span class="nav-number">3.</span> <span class="nav-text">Problem C</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Problem-D"><span class="nav-number">4.</span> <span class="nav-text">Problem D</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Problem-E"><span class="nav-number">5.</span> <span class="nav-text">Problem E</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Problem-F"><span class="nav-number">6.</span> <span class="nav-text">Problem F</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Problem-G"><span class="nav-number">7.</span> <span class="nav-text">Problem G</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Problem-H"><span class="nav-number">8.</span> <span class="nav-text">Problem H</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">STay</span>
+</div>
+
+<div class="powered-by">
+   <a class="theme-link" href="http://hexo.io">Hexo</a> 
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'stayinloves';
+      var disqus_identifier = '2016/07/03/gametheory/';
+      var disqus_title = '博弈论';
+      var disqus_url = 'http://stay.wiki/2016/07/03/gametheory/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';                
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+                            
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').mousedown(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+  
+
+  
+
+  
+
+</body>
+</html>
